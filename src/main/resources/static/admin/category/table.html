@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Loại Hàng</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 30px;
+        }
+        .form-title {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">Danh Sách Loại Hàng</h2>
+
+    <!-- Bảng danh sách loại hàng -->
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th>No</th>
+                    <th>ID</th>
+                    <th>Tên Loại Hàng</th>
+                    <th>ID</th>
+                </tr>
+                </thead>
+                <tbody id="categoryTableBody" >
+                <!-- Dữ liệu loại hàng sẽ được thêm vào đây -->
+                <tr ng-repeat="category in category">
+                    <td>{{$index+1}}</td>
+                    <td>{{category.id}}</td>
+                    <td>{{category.name}}</td>
+                    <td>
+                        <a ng-click="edit(category)" class="btn btn-sm btn-info">Chỉnh sửa</a>
+                        <a ng-click="delete(category)" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" class="btn btn-sm btn-danger">Xóa</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--<script>-->
+<!--    // Lấy danh sách loại hàng từ localStorage hoặc dữ liệu mẫu nếu chưa có-->
+<!--    let categoryList = JSON.parse(localStorage.getItem('categoryList')) || [-->
+<!--        {id: 1, name: 'Đồ điện tử'},-->
+<!--        {id: 2, name: 'Thời trang'},-->
+<!--        {id: 3, name: 'Sách'}-->
+<!--    ];-->
+
+<!--    function renderCategoryTable() {-->
+<!--        const tbody = document.getElementById("categoryTableBody");-->
+<!--        tbody.innerHTML = "";-->
+<!--        categoryList.forEach(category => {-->
+<!--            const row = `<tr>-->
+<!--                            <td>${category.id}</td>-->
+<!--                            <td>${category.name}</td>-->
+<!--                        </tr>`;-->
+<!--            tbody.insertAdjacentHTML('beforeend', row);-->
+<!--        });-->
+<!--    }-->
+
+<!--    document.addEventListener("DOMContentLoaded", renderCategoryTable);-->
+<!--</script>-->
+
+</body>
+</html>

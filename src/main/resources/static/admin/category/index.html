@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Loại Hàng - Form</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <style>
+    .container {
+      margin-top: 30px;
+    }
+    .form-title {
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body ng-app="poly">
+
+    <main ng-controller="hcm">
+      <div ng-include="'/admin/category/form.html'"></div>
+      <div ng-include="'/admin/category/table.html'"></div>
+
+    </main>
+
+<script>
+  var app = angular.module("poly",[]);
+  app.controller("hcm",function ($http,$scope) {
+    $scope.form = {}
+    $scope.create = function ()
+    {
+      var url = "http://localhost:8080/api/category";
+      var data = $scope.form;
+      $http.post(url,data).then(resp =>
+      {
+        $scope.reset();
+        $scope.load();
+      })
+      alert("create()")
+    }
+    $scope.update = function ()
+    {
+      var data = $scope.form;
+      var url = "http://localhost:8080/api/category/"+data.id;
+      $http.put(url, data).then(resp => {
+        $scope.reset();
+        $scope.load();
+      });
+
+      alert("update()")
+    }
+    $scope.delete = function (category)
+    {
+      var url = "http://localhost:8080/api/category/"+category.id;
+      $http.delete(url).then(resp => {
+        $scope.reset();
+        $scope.load();
+      })
+    }
+    $scope.reset = function ()
+    {
+      $scope.form=
+              {
+              }
+      alert("reset()")
+    }
+    $scope.edit = function (category)
+    {
+      $scope.form = angular.copy(category);
+    }
+    $scope.load = function ()
+    {
+      var url = "http://localhost:8080/api/category";
+      $http.get(url).then(resp => {
+        $scope.category = resp.data;
+      });
+    }
+    $scope.load();
+  });
+</script>
+</body>
+</html>

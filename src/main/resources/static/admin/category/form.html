@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Quản lý Loại Hàng - Form</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 30px;
+        }
+
+        .form-title {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Quản Lý Loại Hàng</h2>
+
+    <!-- Form thêm/sửa loại hàng -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4 class="form-title">Thêm/Sửa Loại Hàng</h4>
+            <form id="categoryForm">
+                <div class="form-group">
+                    <label>ID</label>
+                    <input class="form-control" placeholder="Nhập ID" required type="text" ng-model="form.id">
+                </div>
+                <div class="form-group">
+                    <label>Tên Loại Hàng</label>
+                    <input class="form-control" placeholder="Nhập tên loại hàng" required type="text" ng-model="form.name">
+                </div>
+                <button class="btn btn-primary btn-sm " ng-click="create()">Thêm</button>
+                <button class="btn btn-warning btn-sm " ng-click="update()">Sửa</button>
+                <a class="btn btn-danger btn-sm" ng-click="delete(form)">Xóa</a>
+                <button class="btn btn-secondary btn-sm " ng-click="reset()">reset</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--<script>-->
+<!--  // Lưu trữ tạm thời danh sách loại hàng (có thể thay bằng API hoặc gửi dữ liệu sang trang table)-->
+<!--  let categoryList = [-->
+<!--    {id: 1, name: 'Đồ điện tử'},-->
+<!--    {id: 2, name: 'Thời trang'},-->
+<!--    {id: 3, name: 'Sách'}-->
+<!--  ];-->
+<!--  let selectedCategoryId = null;-->
+
+<!--  function addCategory() {-->
+<!--    const name = document.getElementById("categoryName").value;-->
+<!--    if (name) {-->
+<!--      const newCategory = {-->
+<!--        id: categoryList.length ? categoryList[categoryList.length - 1].id + 1 : 1,-->
+<!--        name: name-->
+<!--      };-->
+<!--      categoryList.push(newCategory);-->
+<!--      alert("Đã thêm loại hàng: " + name);-->
+<!--      document.getElementById("categoryForm").reset();-->
+<!--    }-->
+<!--  }-->
+
+<!--  function editCategory() {-->
+<!--    const name = document.getElementById("categoryName").value;-->
+<!--    if (selectedCategoryId && name) {-->
+<!--      const category = categoryList.find(cat => cat.id === selectedCategoryId);-->
+<!--      if (category) {-->
+<!--        category.name = name;-->
+<!--        alert("Đã sửa loại hàng thành: " + name);-->
+<!--      }-->
+<!--    }-->
+<!--  }-->
+
+<!--  function deleteCategory() {-->
+<!--    if (selectedCategoryId) {-->
+<!--      categoryList = categoryList.filter(cat => cat.id !== selectedCategoryId);-->
+<!--      alert("Đã xóa loại hàng");-->
+<!--      selectedCategoryId = null;-->
+<!--      document.getElementById("categoryForm").reset();-->
+<!--    }-->
+<!--  }-->
+<!--</script>-->
+
+</body>
+</html>
